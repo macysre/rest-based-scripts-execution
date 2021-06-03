@@ -91,7 +91,7 @@ Method: `GET`
 curl -X GET http://127.0.0.1:5000/script/helloscript
 ```
 
-4. Get output of script
+4. Get output of script<br/>
 Url: `http://127.0.0.1:5000/script/output/{script_name} `<br/>
 Method: `GET`
 

@@ -8,9 +8,9 @@ Flask RestFul service to run shell scripts that are defined and provided by user
 5. Clients/Users should be able to see all scripts, statuses and outputs
 
 # Technical Design Details
-> This service created with Python Flash framework, and using *dictionary* to store scripts details, status and scripts execution outputs as in-memory. Using threads to schedule tasks (script execution) whenever users/client make *PUT* request to schedule scripts for execution.
+> This service created with Python Flash framework, and using *dictionary* to store scripts details, status and scripts execution output. Tasks are scheduling with threads upon users/client make *PUT* request to schedule scripts for execution.
 
-User inputed scripts will be created under "scripts" directory with executable permissions.
+User providing scripts will be created under "scripts" directory with <script_name>.sh with executable permissions.
 
 # Execution Steps
 *Prerequisites* : Python3
@@ -33,10 +33,10 @@ User inputed scripts will be created under "scripts" directory with executable p
 ```
 5. Run flask app
 ```sh
-   python3 app.py   
+   python3 -m flask run  
 ```
 
-App will be running and you will see below message.
+If app running successfully, you will see below message.
 
 ```sh
 * Serving Flask app 'app' (lazy loading)
@@ -47,10 +47,11 @@ App will be running and you will see below message.
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
+
 # Usage
 
 1. Create Script with curl
-Url: `http://127.0.0.1:5000/script/<script_name> `
+Url: `http://127.0.0.1:5000/script/{script_name} `<br/>
 Method: `POST`
 Payload: `#!/bin/bash\necho "Hello World!"`
 
@@ -58,8 +59,24 @@ Payload: `#!/bin/bash\necho "Hello World!"`
 curl -d $'#!/bin/bash\necho "Hello"' -X POST http://127.0.0.1:5000/script/helloscript
 ```
 
+### Postman Code
+
+```sh
+POST /script/script1 HTTP/1.1
+Host: 127.0.0.1:5000
+Cache-Control: no-cache
+Postman-Token: 49f181cd-af3e-55a7-c47c-748c6d3e86ef
+
+#!/bin/bash
+echo "Hello World!"
+for i in {1..10}; do
+  echo $i
+  sleep 2
+ done
+```
+
 2. Schedule Script for execution
-Url: `http://127.0.0.1:5000/script/<script_name> `
+Url: `http://127.0.0.1:5000/script/{script_name} `<br/>
 Method: `PUT`
 
 ```sh
@@ -67,15 +84,16 @@ curl -X PUT http://127.0.0.1:5000/script/helloscript
 ```
 
 3. Get status of script
-Url: `http://127.0.0.1:5000/script/<script_name> `
+Url: `http://127.0.0.1:5000/script/<script_name> `<br/>
 Method: `GET`
+
 
 ```sh
 curl -X GET http://127.0.0.1:5000/script/helloscript
 ```
 
 4. Get output of script
-Url: `http://127.0.0.1:5000/script/output/<script_name> `
+Url: `http://127.0.0.1:5000/script/output/{script_name} `<br/>
 Method: `GET`
 
 ```sh
@@ -83,7 +101,7 @@ curl -X GET http://127.0.0.1:5000/script/output/helloscript
 ```
 
 5. Get all scripts
-Url: `http://127.0.0.1:5000/`
+Url: `http://127.0.0.1:5000/`\n
 Method: `GET`
 
 ```sh
@@ -93,4 +111,16 @@ curl -X GET http://127.0.0.1:5000/
 # How to run test cases
 ```sh
 python3 test_remote_scripts.py
+```
+
+
+# Docker Build and Run
+1. Build Image locally
+```sh
+    docker build . -t flask-rest-api:1.0
+```
+
+2. Run container
+```sh
+    docker run -d -p 5000:5000 flask-rest-api:1.0
 ```

@@ -58,5 +58,5 @@ api.add_resource(ScriptsList, '/')
 api.add_resource(ScriptTask, '/script/<string:script_name>')
 api.add_resource(ScriptsOutput, '/script/output/<string:script_name>')
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()

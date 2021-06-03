@@ -50,7 +50,7 @@ If app running successfully, you will see below message.
 
 # Usage
 
-1. Create Script with curl
+1. Create Script with curl<br/>
 Url: `http://127.0.0.1:5000/script/{script_name} `<br/>
 Method: `POST`
 Payload: `#!/bin/bash\necho "Hello World!"`
@@ -75,7 +75,7 @@ for i in {1..10}; do
  done
 ```
 
-2. Schedule Script for execution
+2. Schedule Script for execution <br/>
 Url: `http://127.0.0.1:5000/script/{script_name} `<br/>
 Method: `PUT`
 
@@ -83,10 +83,9 @@ Method: `PUT`
 curl -X PUT http://127.0.0.1:5000/script/helloscript
 ```
 
-3. Get status of script
+3. Get status of script<br/>
 Url: `http://127.0.0.1:5000/script/<script_name> `<br/>
 Method: `GET`
-
 
 ```sh
 curl -X GET http://127.0.0.1:5000/script/helloscript
@@ -100,7 +99,7 @@ Method: `GET`
 curl -X GET http://127.0.0.1:5000/script/output/helloscript
 ```
 
-5. Get all scripts
+5. Get all scripts<br/>
 Url: `http://127.0.0.1:5000/`\n
 Method: `GET`
 

@@ -17,21 +17,27 @@ User providing scripts will be created under "scripts" directory with <script_na
 
 1. Clone git repository
 
-2. Create Virtual Environment
+2. Create scripts directory
+
+```sh
+   mkdir scripts
+```
+
+3. Create Virtual Environment
 ```sh
    python3 -m venv venv
 ```
 
-3. Activate Environment
+4. Activate Environment
 ```sh
    python3 venv/bin/activate
 ```
 
-4. Install flask and flask-restuful modules
+5. Install flask and flask-restuful modules
 ```sh
    pip3 install -r requirements.txt
 ```
-5. Run flask app
+6. Run flask app
 ```sh
    python3 -m flask run  
 ```

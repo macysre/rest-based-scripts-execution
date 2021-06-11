@@ -16,6 +16,10 @@ User providing scripts will be created under "scripts" directory with <script_na
 *Prerequisites* : Python3
 
 1. Clone git repository
+```sh
+   git clone git@github.com:macysre/rest-based-scripts-execution.git
+   cd rest-based-scripts-execution
+```
 
 2. Create scripts directory
 

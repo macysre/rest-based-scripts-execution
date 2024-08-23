@@ -1,11 +1,11 @@
 # Getting Started
 Flask RestFul service to run shell scripts that are defined and provided by user through REST APIs. This service exposes multiple REST endpoints to clients/users to perform below operations.
 
-1. Clients/Users should be able to submit shell script with name
-2. Clients/Users should be able to schedule shell scription for execution with script name
-3. Clients/Users should be able to query script status
-4. Clients/Users should be able to see script output
-5. Clients/Users should be able to see all scripts, statuses and outputs
+1. Clients/Users can able to submit shell script with name
+2. Clients/Users can able to schedule shell scription for execution with script name
+3. Clients/Users can be able to query script status
+4. Clients/Users can be able to see script output
+5. Clients/Users can be able to see all scripts, statuses and outputs
 
 # Technical Design Details
 > This service created with Python Flash framework, and using *dictionary* to store scripts details, status and scripts execution output. Tasks are scheduling with threads upon users/client make *PUT* request to schedule scripts for execution.
